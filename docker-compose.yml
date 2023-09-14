@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  dev-databases:
+    image: mysql:latest  # Thay đổi thành phiên bản MySQL mà bạn muốn sử dụng
+    container_name: dev-database
+    ports:
+      - 3307:3306  # Cổng mặc định của MySQL
+    environment:
+      MYSQL_ROOT_PASSWORD: Abc123456789  # Mật khẩu gốc của MySQL
+      MYSQL_DATABASE: testdb  # Tên cơ sở dữ liệu
+    networks:
+      - nestjs-network
+networks:
+  nestjs-network:
+
+
+# Create container, network,.. from docker compose file ;
+#-d: deamon/background mode
+# docker compose up -d
+# if you want to start only specified services/container:
+#docker compose up -d dev-database -d   
+#how to remove container and volumes
+#docker compose rm dev-database --stop --force --volumes
